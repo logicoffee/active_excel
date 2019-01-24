@@ -4,11 +4,11 @@ namespace :setup do
   desc "create excel files for tests"
   task :create do
     dir = File.join(File.dirname(__FILE__), "../excel_files")
-    valid_header   = %w[name email]
+    valid_header   = %w[name email note]
     invalid_header = %w[name  mail]
     
-    alice = ["Alice", "alice@wonderland"]
-    bob   = ["Bob"*17, "IamBob"]
+    alice     = ["Alice",  "alice@wonderland", "valid"]
+    bob       = ["Bob"*17, "IamBob",           "invalid"]
 
     invalid_header_wb     = RubyXL::Workbook.new
     add_row(
