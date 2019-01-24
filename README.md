@@ -78,8 +78,7 @@ Here is an example of valid format:
 |:-|:----|:----------------|:---|
 |1 |name |email            |note|
 |2 |Alice|alice@wonder.land|foo |
-|3 |     |                 |    |
-|4 |Bob  |bob@sponge.com   |bar |
+|3 |Bob  |bob@sponge.com   |bar |
 
 It doesn't matter that there is `note` column which User model doesn't have.
 
