@@ -9,15 +9,19 @@ module ActiveExcel
     table_name = self.name.downcase.pluralize # 例えばActiveRecordならactiverecordsになってしまう
     sheet = workbook[table_name]
     column_names = sheet[0].cells.map(&:value)
+    captured_attributes = self.attribute_names.map do |attribute|
+      if column_names.include?(attribute)
+        [attribute.to_sym, column_names.index(attribute)]
+      end
+    end.compact.to_h
     records = []
     sheet[1..-1].each do |row|
-      attributes = column_names
-                     .map
-                     .with_index do |column_name, index|
-                       [column_name.to_sym, row[index].value]
-                     end
-                     .to_h
-      records << self.new(attributes)
+      if row
+        attributes = captured_attributes.map do |attribute, index|
+          [attribute, row[index].value]
+        end.to_h
+        records << self.new(attributes)
+      end
     end
     ValidatedRecords.new(table_name, records)
   end
