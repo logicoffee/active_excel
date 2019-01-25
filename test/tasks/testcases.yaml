@@ -1,0 +1,43 @@
+- test_name:   invalid_header
+  sheet_name: users
+  records:
+    - 
+      - name
+      - mail
+    - 
+      - Alice
+      - alice@wonder.land
+    -
+      - Bob
+      - bob@sponge.com
+
+- test_name:   invalid_sheet_name
+  sheet_name: user
+  records:
+    - 
+      - name
+      - email
+    - 
+      - Alice
+      - alice@wonder.land
+    -
+      - Bob
+      - bob@sponge.com
+
+- test_name:   valid_workbook
+  sheet_name: users
+  records:
+    - 
+      - name
+      - email
+      - note
+    - 
+      - Alice
+      - alice@wonder.land
+      - valid
+    -
+      - BobBobBobBobBobBobBob
+      - iambob
+      - invalid
+
+

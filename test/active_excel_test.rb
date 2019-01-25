@@ -31,7 +31,7 @@ class ActiveExcelTest < Minitest::Test
   end
 
   def test_valid_workbook_with_invalid_records
-    file_path = File.join(@base_path, "valid.xlsx")
+    file_path = File.join(@base_path, "valid_workbook.xlsx")
     wb = RubyXL::Parser.parse(file_path)
     refute_nil wb["users"]
 
