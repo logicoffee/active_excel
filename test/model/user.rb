@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
 
   extend ActiveExcel
 
-  validates :name,  presence: true, length: { maximum: 50 }
+  validates :name,  presence: true, length: { maximum: 20 }
   validates :email, presence: true, format: { with:/.+@.+/ }
 end
