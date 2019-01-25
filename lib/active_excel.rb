@@ -6,7 +6,7 @@ require "rubyXL"
 module ActiveExcel
   def build_from_excel(file_path)
     workbook = RubyXL::Parser.parse(file_path)
-    table_name = self.name.downcase.pluralize # 例えばActiveRecordならactiverecordsになってしまう
+    table_name = self.name.underscore.pluralize
     sheet = workbook[table_name]
     column_names = sheet[0].cells.map(&:value)
     captured_attributes = self.attribute_names.map do |attribute|
