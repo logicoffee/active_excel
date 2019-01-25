@@ -15,7 +15,10 @@ class ActiveExcelTest < Minitest::Test
     file_path = File.join(@base_path, "invalid_header.xlsx")
     wb = RubyXL::Parser.parse(file_path)
     refute_nil wb["users"]
+
     validated_records = User.build_from_excel(file_path)
+    assert_equal 2, validated_records.all_records.size
+    assert_equal 0, validated_records.valid_records.size
     assert_equal 2, validated_records.invalid_records.size
   end
 
